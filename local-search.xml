@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>CSP-S 2026 游记</title>
+    <link href="/2026/11/01/CSP-S-2026-%E6%B8%B8%E8%AE%B0/"/>
+    <url>/2026/11/01/CSP-S-2026-%E6%B8%B8%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="CSP-S-2026-游记"><a href="#CSP-S-2026-游记" class="headerlink" title="CSP-S 2026 游记"></a>CSP-S 2026 游记</h1><h2 id="Day-30"><a href="#Day-30" class="headerlink" title="Day -30"></a>Day -30</h2><p>初赛 J 组差了 2 分，但 S 组卡线过了，59.5 分极限晋级了。去年的 J 组我是进了的，但我忘记报名了（我也是个神人），导致我错失了一次宝贵的机会。</p><p>准考证号 GD-S02502 (or GD-S02505)，I forgot it.</p><p>GD-J棍母棍母棍母，我也忘了。</p><h2 id="Day-n"><a href="#Day-n" class="headerlink" title="Day - $n$"></a>Day - $n$</h2><p>求 $n$ 的值。</p><p>我也不知道具体多少天了，每天晚上我们 6:00 到机房一直训练到 8:00，语文和英语作业一般 <del>不写</del> 没时间写。数学通常老师不检查<del>（有时候会屌我们）</del>，但是我们一般都只写化学和物理。</p><p>浑浑噩噩了几天后，我才开始打算学习新算法，我问了 AI，它给我总结了这些知识点：</p><ul><li><input checked="" disabled="" type="checkbox"> BFS &#x2F; DFS</li><li><input checked="" disabled="" type="checkbox"> 并查集</li><li><input disabled="" type="checkbox"> 拓扑排序</li><li><input checked="" disabled="" type="checkbox"> Dijkstra 堆优化</li><li><input checked="" disabled="" type="checkbox"> Floyd（了解）</li><li><input disabled="" type="checkbox"> Kruskal + 并查集</li><li><input disabled="" type="checkbox"> Prim（了解）</li><li><input disabled="" type="checkbox"> 树上 DFS 序、子树和、LCA</li><li><input disabled="" type="checkbox"> 强连通分量、割点割边</li><li><input disabled="" type="checkbox"> 网络流</li></ul><p><del>然后你就会知道我其实只学（复习）了四个。</del></p><h2 id="Day-m"><a href="#Day-m" class="headerlink" title="Day - $m$"></a>Day - $m$</h2><p>保证 $2 \leq m \leq n$。这个 $m$ 不是下面 crystal 的 $m$。</p><p>后面时间变得慢慢充裕起来了，6:00 一直到 8:40 你还可以继续留，你甚至可以一直留到 9:30 （晚修下课的时间）。但我要体育辅差（其实我那天软脚了跑了 4’23’’），所以有时候时间是不怎么够用的，然后有时候我会只打一碗汤就跑路。</p><p>总之我终于会了 Dijkstra 和 Floyd。</p><h2 id="Day-2-Day-1"><a href="#Day-2-Day-1" class="headerlink" title="Day -2 &amp;&amp; Day -1"></a>Day -2 &amp;&amp; Day -1</h2><p>临近比赛的日子，我们都基本上留到了 9:20 左右，这两天我基本都在背模板和<del>看B站</del>写题，在我的不懈努力之下，我终于背完了 Dijkstra 堆优化。</p><p>然后没有什么好说的了，明天考试，我们前一天晚上还被■■■（一个领导）给训了一顿，然后■■■把我们教练训了一顿。</p><h2 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h2><p>第一次真正踏入 CSP-S2 的考场，前面的知情同意书不必多说了，然后就是把题目和样例解压下来。</p><h3 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h3><p><code>crystal</code>。</p><p>我最开始是用 vector 存储的，我不知道在哪里读到一个保证数据单调递增，然后我就不管了。输入完之后我写了一个双重循环，第一个循环从 $n - 1$ 到 <code>(int)(n / 2) - 1</code>（为什么我要加<code>(int)</code>），第二个循环是 从 $i - 1$ 到 <code>0</code>，我写了一个 <code>total</code> 和 <code>maxans</code>，每个循环都计算 <code>a[i]</code> 和 <code>a[j]</code> 的差值，如果差值加上 <code>total</code> 要小于 $m$（当然不是前面的 $m$）就加上，然后 <code>ans ++</code>，最后找最大的 <code>ans</code> 就输出。</p><hr><p>做到这我信心满满，立马切了 T2。</p><h3 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h3><p><code>subway</code>。</p><p>题面也太长了，读了我 10 分钟左右，然后我还是有些没理解，我想这是图论，我觉得这极有可能是 Dijkstra （事实证明我是错的，洛谷上是 Floyd，哈哈），然后我开始翻来覆去的写代码，但是写完变量名不知道该干什么了，我就拿出尘封的草稿纸，我想先把 t 这个数组画出来再说。</p><p>结果画完模拟了一遍，这也太通透了：输入 <code>k</code> 后，先定义 <code>u</code> 和 <code>v</code>，然后输进去后判断，如果是第一次输入，就不加入到邻接表；如果不是第一次，就 <code>adj[u].push_back(memory[1], memory[2] + v)</code>（<code>memory</code> 是存储上一个输入数据的数组），也就是说，一个车站到另一个车站，得先到这条线路站台，再从站台到车站，那两个车站不就是节点吗？那边权不就是上一个车站到站台的时间加上这一个车站到站台的时间吗？最后跑一遍以 <code>x</code> 为起点的 Dijkstra ，把 <code>w[x]</code> ，<code>dist[y]</code> 和 <code>w[y]</code>相加不就行了？</p><p>我迅速写完代码，跑了一遍（我绝对不会告诉你我不完全记得 Dijkstra 然后我就在函数里面一个一个变量名交换看看哪个结果合理）后，发现我对了样例一！我十分兴奋，于是开始跑样例二，结果第一个输出 <code>243</code> ？</p><p>我又拿出草稿纸，模拟了一遍，发现其实一条线路是一个环，只需要在输入完 <code>k</code> 组 <code>u, v</code> 后再添加第一次输入的 <code>u, v</code> 就行了，第二个也对了！</p><h3 id="T3-T4-没写，我后面在调代码"><a href="#T3-T4-没写，我后面在调代码" class="headerlink" title="T3 T4 没写，我后面在调代码"></a>T3 T4 没写，我后面在调代码</h3><p>我把第一题样例三和四都复制了过来，结果样例三就不对，原来是我看走眼了，这题没有保证单调递增。</p><p>我最开始想写 <code>set</code> ，但我脑子又抽了，因为我误把特殊性质 A 看成了 <code>a[i] = a[i-1] = a[i-2] = ... = a[1]</code>，然后我想 <code>set</code> 会去重，还是用数组吧。</p><p>disaster.</p><p>接着我开始调第二题，很猎奇的是，我的样例四是对的，结果样例三是错的。我最后一小时都一直在调代码，然后被 <code>subway5.ans</code> 吓到（全都变成锟斤拷），</p><p>警钟敲烂：用 Google 打开 ans 文件比用记事本好上 $10^{1145}$ 倍。</p><p>最后拼尽全力没有写出来。30 + 30 + 0 + 0 &#x3D; 60 pts。</p><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>初中最后一次 CSP，同时也是我的第一次。</p><p>如果这次考砸，我就不搞 OI until 我上高中。</p><p>whk++。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>游记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>题解：A + B Problem</title>
     <link href="/2026/10/25/%E9%A2%98%E8%A7%A3%EF%BC%9AA%20+%20B%20Problem/"/>
     <url>/2026/10/25/%E9%A2%98%E8%A7%A3%EF%BC%9AA%20+%20B%20Problem/</url>
